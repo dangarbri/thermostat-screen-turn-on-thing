@@ -93,7 +93,7 @@ void PWMPin::impl::SetHighTicks(uint16_t ticks) {
     pwm_set_gpio_level(pin, ticks);
     // Reset PWM counter
     // TODO: Not sure if this is appropriate
-    pwm_set_counter(slice, 0);
+    // pwm_set_counter(slice, 0);
 }
 
 PWMPin::PWMPin(uint pin) {
