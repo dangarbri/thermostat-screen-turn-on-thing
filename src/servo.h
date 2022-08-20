@@ -8,14 +8,11 @@
  * This implementation is based on the servo description
  * of this wikipedia article: https://en.wikipedia.org/wiki/Servo_control
  * Key points:
- *   - Uses a clock frequency of 50Hz
- *   - 90 degree turn = 1.5ms pulse / 20ms (50Hz) = 7.5% duty cycle
- *   - Assumption: Doubling the pulse will double the rotation
- *     * 180 degree turn = 3ms pulse / 20ms (50Hz) = 15% duty cycle
+ *   - Uses a clock divider to get the PWM counter to wrap 50 times a second (50Hz)
+ *   - PWM counter is 65535.
+ *   - Experimentally I found 1400 ticks to be 0 turn and 8000 to be 100% (180degree) turn on the servo
+ *   - If these tick values don't work for you'll have to experiment on your own.
  *
- * If your servo doesn't respond to the above, then you
- * need to find and check your datasheet to figure out
- * what frequency it needs to run at
  */
 class Servo {
 public:

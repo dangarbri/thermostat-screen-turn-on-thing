@@ -21,21 +21,9 @@ public:
 
     /**
      * Free's impl pointer
+     * @private
      */
     ~PWMPin();
-
-    /**
-     * Updates the internal clock divider to achieve the
-     * desired PWM frequency on the pin
-     *
-     * @note In the PWM hardware, each slice is tied to two pins
-     *       and they must share a clock frequency. Make sure
-     *       to account for this in your design
-     *
-     * @param[in] pin GPIO pin number
-     * @param[in] _ Reserved
-     */
-    // void SetFrequency(uint pin, uint _);
 
     /**
      * Sets the duty cycle to the given percentage

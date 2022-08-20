@@ -6,6 +6,9 @@
     #include <stdio.h>
 #endif
 
+/**
+ * @private
+ */
 struct PWMPin::impl {
     /**
      * Sets the pin to use PWM, builds up some state for managing the
