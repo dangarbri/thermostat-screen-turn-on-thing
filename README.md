@@ -14,4 +14,4 @@ one I've written here is fully documented explaining
 how PWM is controlled at 50Hz for my servo (SG92R)
 
 ## End Result
-![Video of system in action](https://appsolutelywonderful.com/wp-content/uploads/2022/08/VID_20220820_180822.mp4)
+[Video of system in action](https://appsolutelywonderful.com/archives/439)
