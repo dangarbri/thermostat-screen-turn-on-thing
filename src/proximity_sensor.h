@@ -14,8 +14,10 @@ public:
     ProximitySensor(uint trigger_pin, uint echo_pin);
 
     /**
-     * Blocking call that will get a reading from the sensor
-     * @returns calculated distance in (TODO: what unit is this?
+     * Blocking call that will return the average reading from the sensor
+     * over 60ms (recommended by the elecfreak's product sheet)
+     * 
+     * @returns calculated distance in centimeters
      */
     uint64_t GetProximity();
 private:
@@ -51,4 +53,10 @@ private:
      * @returns centimeters
      */
     uint64_t _CalculateDistance(uint64_t duration_us);
+
+    /**
+     * Gets a readout from the sensor
+     * @returns centimeters from the sensor readout
+     */
+    uint64_t GetSample();
 };

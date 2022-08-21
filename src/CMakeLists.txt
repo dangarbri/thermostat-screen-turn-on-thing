@@ -1,5 +1,6 @@
 add_executable(thermostat_turner_onner
     main.cpp
+    pwm.cpp
     servo.cpp
     proximity_sensor.cpp
 )

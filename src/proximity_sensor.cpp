@@ -4,6 +4,8 @@
     #include <stdio.h>
 #endif
 
+#define SAMPLE_DURATION_60_MS 60
+
 /**
  * Documentation states set trigger high for at least 10us
  */
@@ -26,6 +28,25 @@ ProximitySensor::ProximitySensor(uint trigger_pin, uint echo_pin) {
 }
 
 uint64_t ProximitySensor::GetProximity() {
+    // Initialize sample variables for number of samples and cumulative
+    // readings
+    uint64_t sample_count = 0;
+    uint64_t sample_total = 0;
+    do {
+        sample_total += GetSample();
+        sample_count += 1;
+        // For sanity, let the pins stay low for a time after
+        // reading the sample
+        sleep_us(10);
+        // for a reading, each cm is 58us, so 1000 * 58 = 58000us or 58ms.
+        // Product sheet recommends sampling for at least 60ms.
+        // Code managing this loop based on the clock tended to
+        // hang, so using measurement to cap it instead.
+    } while (sample_total < 1000);
+    return sample_total / sample_count;
+}
+
+uint64_t ProximitySensor::GetSample() {
 #ifdef DEBUG_PROXIMITY_SENSOR
     puts("Polling proximity");
 #endif
